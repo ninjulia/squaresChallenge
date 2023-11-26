@@ -30,8 +30,8 @@ Code solution for the coding challenge presented in the FreeCodeCamp article: [H
 
 ### Links
 
-- Solution URL [github.com/ninjulia/squareschallenge](https://github.com/ninjulia/squareschallenge/)
-- Live Site URL: [ninjulia.github.io/squareschallenge](https://ninjulia.github.io/squareschallenge/)
+- Solution URL [github.com/ninjulia/squaresChallenge](https://github.com/ninjulia/squaresChallenge)
+- Live Site URL: [ninjulia.github.io/squaresChallenge](https://ninjulia.github.io/squaresChallenge/)
 
 ## My Process
 
