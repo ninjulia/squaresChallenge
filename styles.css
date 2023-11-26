@@ -1,0 +1,258 @@
+html {
+    box-sizing: border-box;
+    font-family: 'Open Sans', system-ui, sans-serif;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+/*Button Resets from https://github.com/necolas/normalize.css/blob/master/normalize.css */
+button,
+[type="button"] {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding:0;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* Scale - Perfect Fourth*/
+/* @link https://utopia.fyi/type/calculator?c=320,18,1.333,1240,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+    /* Typography */
+    --step--2: clamp(0.6331rem, 0.6086rem + 0.1228vw, 0.7038rem);
+    --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --step-2: clamp(1.9988rem, 1.9214rem + 0.387vw, 2.2213rem);
+
+
+    /* Space */
+    --space-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --space-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+    --space-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+    --space-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+
+}  
+
+/* Color Themeing */
+:root {
+    --primary: #00AA8D;
+    --color-500: #00BF9A;
+    --color-900: #008975;
+    --light: #FAFAFA;
+    --dark: #212121;
+}
+
+@media (prefers-color-scheme:light){
+    html {
+      --field: var(--light);
+      --text: var(--darkest);
+      --accent:var(--color-900);
+      --borders: var(--color-500);
+      --selected:var(--primary);
+    }
+    
+}
+
+@media (prefers-color-scheme:dark){
+    html {
+      --field: var(--dark);
+      --text: var(--light);
+      --accent:var(--primary);
+      --borders: var(--color-900);
+      --selected:var(--color-500);
+    }
+    
+}
+
+body { background-color:var(--field); }
+body,p { color:var(--text); }
+h1 {color:var(--accent)}
+
+a:link {
+    color:var(--accent)
+}
+
+a:visited {
+    color:var(--color-900)
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    color:var(--color-500);
+}
+
+a:active {
+    color:var(--field);
+    background-color: var(--accent);
+}
+
+/* Typography */
+body, p {
+    font-weight: 300;
+    font-size: var(--step-0);
+    line-height: 1.6;
+}
+
+h1 {
+    font-weight: 700;
+    font-size:var(--step-2);
+    line-height: 1.15;
+    margin-block-end:var(--space-s);
+}
+
+p {
+    max-width: 90ch;
+}
+
+/*Helper Classes*/
+:root { 
+    --time: 3s; /*default to slower value*/
+}
+
+@media (prefers-reduced-motion:no-preference){
+    :root{
+        --time: 0.5s;
+    }
+}
+
+/*hide button text from screen*/
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+}
+
+/* Layouts */
+html, body {
+    height: 100dvh;
+    margin:0;
+    padding:0;
+}
+
+main, footer {
+    padding:var(--space-l);
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+main header {
+    margin-bottom: var(--space-l);
+}
+
+.button-container {
+    margin:0 auto;
+    max-height: 50dvh;
+    aspect-ratio: 1;
+    padding:var(--space-m);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(calc(40px + var(--space-m)), 25%), 1fr));
+    grid-template-rows: auto;
+    gap:var(--space-m);
+    place-items: center;
+    
+}
+
+.button-container button {
+    width: max(40px, 100%);
+    aspect-ratio: 1;
+}
+
+footer {
+    align-self: end;
+    padding:var(--space-s) var(--space-xl);
+}
+
+/*styles*/
+.button-container, 
+.button-container button {
+    outline:1px solid var(--borders);
+    border-radius: var(--step--2);
+}
+
+/*new button styling*/
+button {
+    display: grid;
+    place-content: center;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: transparent;    
+}
+
+button:hover:not(:disabled),
+button:focus:not(:disabled) {
+    --wiggleTime: calc(var(--time)/2);
+
+    animation-duration: var(--wiggleTime);
+    animation-name: wiggle;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+button:focus:not(:disabled) {
+    outline: 1px solid var(--borders);
+    outline-offset: calc(var(--step--2) * -1);
+}
+
+.selected {
+    background-size: 100% 100%;    
+}
+
+button::after {
+    content: "";
+    display: grid;
+    place-content: center;
+    position: absolute;
+    inset: 0;
+    background-color: var(--selected);
+    clip-path: circle(0%);
+    transition:clip-path var(--time) ease-in-out;
+    border:4px solid var(--field);
+    border-radius: var(--step--2);
+  }
+
+  button.selected::after{
+    clip-path: circle(100%);
+  }
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg)}
+    25% { transform: rotate(-5deg)}
+    50% { transform: rotate(0deg)}
+    75% { transform: rotate(5deg)}
+    100% { transform: rotate(0deg)}
+  }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+        <text y=%22.9em%22 font-size=%2290%22>
+          📕
+        </text>
+      </svg>">
+    <title>6 Squares Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>Select Squares</h1>
+            <p>Select all the squares in any order. Each square will turn green when clicked. When the last clicked
+                square
+                has changed color, all squares will revert to their initial state in the reverse order they were
+                clicked.
+            </p>
+        </header>
+        <section class="button-container">
+            <button type="button" id="one"><span class="sr-only">1</span></button>
+            <button type="button" id="two"><span class="sr-only">2</span></button>
+            <button type="button" id="three"><span class="sr-only">3</span></button>
+            <button type="button" id="four"><span class="sr-only">4</span></button>
+            <button type="button" id="five"><span class="sr-only">5</span></button>
+            <button type="button" id="six"><span class="sr-only">6</span></button>
+            <!--
+            <button type="button" id="seven"><span class="sr-only">7</span></button>
+            <button type="button" id="eight"><span class="sr-only">8</span></button>
+            <button type="button" id="nine"><span class="sr-only">9</span></button>
+            -->
+        </section>
+    </main>
+    <footer>
+        <p>Code solution for the coding challenge presented in the FreeCodeCamp article: <a
+                href='https://www.freecodecamp.org/news/how-to-build-projects-as-a-junior-developer/'
+                rel="noreferrer">How to Build Successful Projects as a Junior Developer</a> by Spruce Emmanuel.
+        </p>
+        <p>Coded by <a href="https://github.com/ninjulia/">Julia Czarnecki.</a></p>
+    </footer>
+
+    <!-- confetti via https://github.com/catdad/canvas-confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
